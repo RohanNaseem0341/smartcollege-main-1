@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Student,StudentData,Teacher,Fees,Courses
+from .models import Student,StudentData,Teacher,Fees,Courses,JobRecommendation
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Courses
@@ -31,4 +31,11 @@ class FeesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fees
         fields = '__all__'
+
+class JobRecommendationSerializer(serializers.ModelSerializer):
+    course_name = serializers.ReadOnlyField(source='course.course_name')
+    
+    class Meta:
+        model = JobRecommendation
+        fields = ['id', 'course', 'course_name', 'job_title', 'description', 'entry_salary', 'experienced_salary', 'job_website']
 

@@ -1,0 +1,156 @@
+/* Custom Admin Styles */
+
+/* Table enhancements */
+#changelist table {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+#changelist table thead th {
+  background-color: #f9f9f9;
+  padding: 12px 10px;
+  font-weight: 600;
+}
+
+#changelist table tbody tr:hover {
+  background-color: #f5f9ff;
+}
+
+#changelist table tbody td {
+  padding: 12px 10px;
+}
+
+/* Login page */
+.login {
+  background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login #container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.login #header {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.login #header h1 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.login .form-row {
+  padding: 8px 0;
+  border-bottom: none;
+}
+
+.login .form-row label {
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+  padding: 0 0 8px 0;
+}
+
+.login .submit-row {
+  padding: 20px 0 0 0;
+  border-top: none;
+  text-align: center;
+}
+
+.login .submit-row input {
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Dashboard improvements */
+.dashboard .colMS {
+  margin-right: 20px;
+}
+
+.dashboard .module table td {
+  padding: 12px 10px;
+}
+
+.dashboard .module table th {
+  padding: 12px 10px;
+}
+
+.dashboard .module h2 {
+  padding: 14px 16px;
+}
+
+/* App index */
+.app-studentmanagementsystem .module h2 {
+  background: #1a73e8;
+  color: white;
+}
+
+/* Fix weird padding issue in some admin forms */
+fieldset.module {
+  padding: 10px;
+}
+
+/* Improve Django suit-like appearance */
+.field-box.field-student, 
+.field-box.field-course,
+.field-box.field-teacher,
+.field-box.field-status,
+.field-box.field-date,
+.field-box.field-time,
+.field-box.field-venue {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+/* Action buttons */
+.object-tools {
+  margin-top: 15px;
+}
+
+/* Django admin date/time widget fixes */
+.calendarbox, .clockbox {
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+}
+
+.calendar caption, .calendarbox h2 {
+  background: #1a73e8;
+  color: white;
+  border-radius: 4px 4px 0 0;
+}
+
+.calendar td a:hover {
+  background: #1a73e8;
+}
+
+.calendar td.selected a {
+  background: #1a73e8;
+}
+
+/* Related widget wrapper fixes */
+.related-widget-wrapper {
+  margin-bottom: 10px;
+}
+
+/* Fix select2 widget if used */
+.select2-container {
+  min-width: 200px;
+} 

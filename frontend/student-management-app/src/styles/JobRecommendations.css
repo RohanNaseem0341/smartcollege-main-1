@@ -1,0 +1,47 @@
+.job-recommendations-card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.job-recommendations-card .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  font-weight: 600;
+}
+
+.job-item {
+  transition: all 0.2s ease;
+}
+
+.job-item:hover {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.job-description {
+  color: #495057;
+}
+
+.course-badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+}
+
+.salary-info {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.job-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+@media (max-width: 768px) {
+  .salary-info {
+    width: 100%;
+  }
+} 

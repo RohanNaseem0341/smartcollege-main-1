@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from rest_framework import generics
-from .models import Student,StudentData,Grades,Teacher,Fees,Examination
+from .models import Student,StudentData,Grades,Teacher,Fees,Examination,JobRecommendation
 from .serializers import StudentSerializer,StudentDetailsSerializer,TeacherSerializer,FeesSerializer
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
@@ -158,3 +158,27 @@ def verify_fee_payment(request, std_id):
             'success': False,
             'message': str(e)
         }, status=500)
+
+def student_job_recommendations(request, std_id):
+    # Retrieve the Student object based on the provided student ID
+    student = get_object_or_404(Student, std_id=std_id)
+    
+    # Get all courses the student is enrolled in
+    courses = student.courses.all()
+    
+    # Retrieve job recommendations for these courses
+    job_recommendations = JobRecommendation.objects.filter(course__in=courses)
+    
+    # Prepare data for response
+    data = []
+    for job in job_recommendations:
+        data.append({
+            "course_name": job.course.course_name,
+            "job_title": job.job_title,
+            "description": job.description,
+            "entry_salary": job.entry_salary,
+            "experienced_salary": job.experienced_salary,
+            "job_website": job.job_website
+        })
+    
+    return JsonResponse(data, safe=False)

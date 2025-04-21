@@ -1,0 +1,193 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Smart College Admin') }}{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom_admin.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a73e8;
+    --secondary: #34a853;
+    --accent: #ea4335;
+    --primary-fg: #fff;
+    --body-fg: #333;
+    --body-bg: #f5f7fa;
+    --header-color: #fff;
+    --darkened-bg: #f8f8f8;
+  }
+
+  body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  #header {
+    background: linear-gradient(90deg, var(--primary) 0%, #4285f4 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #branding h1 {
+    font-weight: 600;
+  }
+
+  #branding h1 a:link, #branding h1 a:visited {
+    color: var(--header-color);
+    transition: color 0.2s ease;
+  }
+
+  #branding h1 a:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+
+  .module h2, .module caption, .inline-group h2 {
+    background: var(--primary);
+    color: var(--primary-fg);
+    font-weight: 500;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--primary);
+    color: var(--primary-fg);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover {
+    background: #0d66d0;
+  }
+
+  .button.default, input[type=submit].default, .submit-row input.default {
+    background: var(--secondary);
+  }
+
+  .button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
+    background: #2d9949;
+  }
+
+  div.breadcrumbs {
+    background: #4285f4;
+    padding: 12px 15px;
+  }
+
+  .object-tools a {
+    font-weight: 500;
+    background: var(--primary);
+    border-radius: 4px;
+  }
+
+  .object-tools a:hover {
+    background: #0d66d0;
+  }
+
+  .object-tools a.addlink {
+    background: var(--secondary);
+  }
+
+  .object-tools a.addlink:hover {
+    background: #2d9949;
+  }
+
+  /* Dashboard styles */
+  .dashboard .module {
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: none;
+    overflow: hidden;
+  }
+
+  .dashboard .module table th {
+    background-color: #f9f9f9;
+  }
+
+  /* Form styles */
+  .form-row {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel], textarea, select, .vTextField {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.2s ease;
+  }
+
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=number]:focus, input[type=tel]:focus, textarea:focus, select:focus, .vTextField:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  }
+
+  /* Message styles */
+  .messagelist li {
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 12px 15px;
+  }
+
+  .messagelist li.success {
+    background-color: #d6f5d6;
+    border: 1px solid #c3e6c3;
+    color: #2e7d32;
+  }
+
+  .messagelist li.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  .messagelist li.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+  }
+
+  .messagelist li.info {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+  }
+
+  /* Pagination */
+  .paginator {
+    margin: 15px 0;
+    font-size: 0.9rem;
+  }
+
+  .paginator a:link, .paginator a:visited {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 3px;
+    color: var(--primary);
+  }
+
+  .paginator a:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+  }
+
+  .paginator .this-page {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 3px;
+    font-weight: 500;
+  }
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        Smart College Administration
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %} 

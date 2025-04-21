@@ -63,6 +63,15 @@ export const fetchStudentExams = async (studentId) => {
   }
 };
 
+export const fetchStudentJobRecommendations = async (studentId) => {
+  try {
+    const response = await apiClient.get(`/students/jobs/${studentId}/`);
+    return response.data;
+  } catch (error) {
+    return handleApiError(`fetchStudentJobRecommendations(${studentId})`, error);
+  }
+};
+
 // API functions for teachers
 export const fetchTeachers = async () => {
   try {

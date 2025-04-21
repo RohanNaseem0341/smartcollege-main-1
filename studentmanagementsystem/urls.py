@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import StudentList,student_details,student_grades,TeacherList,Teacher_details,student_fees,student_exam,verify_fee_payment
+from .views import StudentList,student_details,student_grades,TeacherList,Teacher_details,student_fees,student_exam,verify_fee_payment,student_job_recommendations
 from django.views.generic import RedirectView
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('students/fees/<int:std_id>/', student_fees, name='student-fees'),
     path('students/fees/payment/<int:std_id>/', verify_fee_payment, name='student-fee-payment'),
     path('students/exam/<int:std_id>/', student_exam, name='student-exam'),
+    path('students/jobs/<int:std_id>/', student_job_recommendations, name='student-job-recommendations'),
 ]

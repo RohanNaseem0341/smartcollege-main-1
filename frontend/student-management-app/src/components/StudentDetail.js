@@ -5,10 +5,13 @@ import {
   fetchStudentGrades, 
   fetchStudentFees, 
   fetchStudentExams,
-  fetchStudents
+  fetchStudents,
+  fetchStudentJobRecommendations
 } from '../services/api';
 import PaymentForm from './PaymentForm';
+import JobRecommendations from './JobRecommendations';
 import '../styles/StudentDetail.css';
+import '../styles/JobRecommendations.css';
 
 // React-bootstrap components
 import Container from 'react-bootstrap/Container';
@@ -30,6 +33,7 @@ const StudentDetail = () => {
   const [grades, setGrades] = useState([]);
   const [fees, setFees] = useState([]);
   const [exams, setExams] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
@@ -65,6 +69,10 @@ const StudentDetail = () => {
         // Fetch student exams
         const examsData = await fetchStudentExams(studentId);
         setExams(examsData);
+        
+        // Fetch job recommendations
+        const jobsData = await fetchStudentJobRecommendations(studentId);
+        setJobs(jobsData);
         
         setLoading(false);
       } catch (err) {
@@ -158,6 +166,11 @@ const StudentDetail = () => {
             <Nav.Item>
               <Nav.Link eventKey="exams">
                 <i className="bi bi-calendar-check"></i> Exams
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="jobs">
+                <i className="bi bi-briefcase"></i> Career
               </Nav.Link>
             </Nav.Item>
           </Nav>
@@ -278,6 +291,10 @@ const StudentDetail = () => {
                   ))}
                 </Card.Body>
               </Card>
+            </Tab.Pane>
+            
+            <Tab.Pane eventKey="jobs">
+              <JobRecommendations jobs={jobs} />
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>

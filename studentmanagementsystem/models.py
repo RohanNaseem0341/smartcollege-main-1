@@ -72,3 +72,15 @@ class Examination(models.Model):
     
     def __str__(self):
         return f"{self.course.course_name} - {self.date} {self.time}"
+
+class JobRecommendation(models.Model):
+    id = models.AutoField(primary_key=True)
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    job_title = models.CharField(max_length=200)
+    description = models.TextField()
+    entry_salary = models.CharField(max_length=100)
+    experienced_salary = models.CharField(max_length=100)
+    job_website = models.URLField(max_length=200)
+    
+    def __str__(self):
+        return f"{self.course.course_name} - {self.job_title}"

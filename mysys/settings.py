@@ -32,21 +32,26 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # django-admin-interface
+    'admin_interface',
+    'colorfield',
+    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Project apps
     'studentmanagementsystem',
     'rest_framework',
     'corsheaders',
+    'mysys',  # Add the project app to allow static files
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -60,7 +65,7 @@ ROOT_URLCONF = 'mysys.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'mysys/templates')],  # Include custom templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mysys.context_processors.admin_stats',  # Add custom context processor for admin
             ],
         },
     },
@@ -124,9 +130,36 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'mysys/static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
 }
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Admin site customization
+ADMIN_SITE_HEADER = "Smart College Management System"
+ADMIN_SITE_TITLE = "Smart College Admin"
+ADMIN_INDEX_TITLE = "Welcome to Smart College Admin Portal"
+
+# Django admin interface settings
+ADMIN_INTERFACE_THEME_FOOTER = True
+ADMIN_INTERFACE_THEME_SETTINGS = {
+    'show_fieldsets_as_tabs': True,
+    'foldable_apps': True,
+    'show_ui_builder': True,
+    'show_changes_form': True,
+    'list_filter_dropdown': True,
+    'list_filter_sticky': True,
+    'form_submit_sticky': True,
+    'collapsible_stacked_inlines': True,
+}
+
+# Only one admin interface theme can be active at a time
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
